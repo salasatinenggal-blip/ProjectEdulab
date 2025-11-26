@@ -19,8 +19,3 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-
-//saya naya
-// jsjsjsjj
-//tai
-//eeg
