@@ -1,28 +1,23 @@
-package com.example.edulab
+package com.example.projectedulab
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.example.edulab.databinding.FragmentHistoryBinding
 
 class HistoryFragment : Fragment() {
 
-    private var _binding: FragmentHistoryBinding? = null
-    private val binding get() = _binding!!
-
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentHistoryBinding.inflate(inflater, container, false)
-        return binding.root
+        // Menginflate (memuat) layout XML: fragment_history.xml
+        return inflater.inflate(R.layout.fragment_history, container, false)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        // Logika spesifik HistoryFragment dapat ditambahkan di sini
     }
 }

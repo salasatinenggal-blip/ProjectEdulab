@@ -6,22 +6,22 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.edulab.HomeFragment"
+        android:name="com.example.projectedulab.HomeFragment"
         android:label="Beranda" />
 
     <fragment
         android:id="@+id/nav_template"
-        android:name="com.example.edulab.TemplateFragment"
+        android:name="com.example.projectedulab.TemplateFragment"
         android:label="Template" />
 
     <fragment
         android:id="@+id/nav_history"
-        android:name="com.example.edulab.HistoryFragment"
+        android:name="com.example.projectedulab.HistoryFragment"
         android:label="Riwayat" />
 
     <fragment
         android:id="@+id/nav_profile"
-        android:name="com.example.edulab.ProfileFragment"
+        android:name="com.example.projectedulab.ProfileFragment"
         android:label="Profil" />
 
 </navigation>
