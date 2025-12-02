@@ -1,28 +1,28 @@
-package com.example.edulab
+package com.example.projectedulab
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.edulab.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
-
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root
+        // Inflate layout XML untuk fragment ini
+        // Ganti R.layout.fragment_home dengan nama file XML layout fragment Anda
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    // Tempatkan logika Fragment (misalnya: inisialisasi View, listener) di sini
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        // Contoh: Mengakses View dari fragment_home.xml
+        // val myTextView = view.findViewById<TextView>(R.id.my_text_view)
+        // myTextView.text = "Selamat Datang!"
+        // tasfdskadsakl
     }
 }
