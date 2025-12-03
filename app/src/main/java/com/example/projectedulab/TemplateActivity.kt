@@ -1,4 +1,4 @@
-package com.example.edulab
+package com.example.projectedulab
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,11 +21,11 @@ class TemplateActivity : AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(this, 2)
 
         val templates = listOf(
-            Template("Laporan Praktikum Basis Data", "18 Pages", R.drawable.cover_basisdata, "template_basisdata.docx"),
-            Template("Laporan Praktikum Jaringan", "28 Pages", R.drawable.cover_jaringan, "template_jaringan.docx"),
-            Template("Laporan Praktikum Manajemen", "30 Pages", R.drawable.cover_manajemen, "template_manajemen.docx"),
-            Template("Laporan Praktikum Matematika", "14 Pages", R.drawable.cover_matematika, "template_matematika.docx")
+            Template("Template Resume", "18 Pages", R.drawable.cover_TemplateResume, "template_Resume.docx"),
+            Template("Template Laporan Praktikum", "28 Pages", R.drawable.cover_TemplateLaporan, "template_jaringan.docx")
         )
+
+
 
         recyclerView.adapter = TemplateAdapter(templates) { template ->
             openWordTemplate(template.fileName)
