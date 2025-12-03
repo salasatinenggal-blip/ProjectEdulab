@@ -23,5 +23,6 @@ class HomeFragment : Fragment() {
         // Contoh: Mengakses View dari fragment_home.xml
         // val myTextView = view.findViewById<TextView>(R.id.my_text_view)
         // myTextView.text = "Selamat Datang!"
+        // tasfdskadsakl
     }
 }

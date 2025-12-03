@@ -17,7 +17,7 @@ class LoginActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
 
-        // Mengatur insets untuk layout
+        // Mengatur insets layout
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
         val etPassword = findViewById<EditText>(R.id.etPassword)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
 
-        // Event saat tombol Login ditekan
+        // Aksi tombol login
         btnLogin.setOnClickListener {
 
             val email = etEmail.text.toString().trim()
@@ -46,16 +46,16 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // LOGIN SEDERHANA (DUMMY)
+            // Dummy login
             if (email == "admin@gmail.com" && password == "123456") {
 
                 Toast.makeText(this, "Login Berhasil!", Toast.LENGTH_SHORT).show()
 
-                // MASUK KE HomeActivity (yang berisi Fragment)
-                val intent = Intent(this, HomeFragment::class.java)
+                // Masuk ke MainActivity (bukan fragment!)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
 
-                // Agar tidak bisa kembali ke LoginActivity
+                // Supaya tidak bisa kembali ke login
                 finish()
 
             } else {
