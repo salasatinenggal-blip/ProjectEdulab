@@ -1,4 +1,4 @@
-package com.example.projectedulab
+package com.example.yourappname   // ubah sesuai package kamu
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,13 +7,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class LaporanAdapter(private var data: List<Laporan>) :
+class LaporanAdapter(private var list: ArrayList<Laporan>) :
     RecyclerView.Adapter<LaporanAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val img: ImageView = itemView.findViewById(R.id.imgCover)
-        val judul: TextView = itemView.findViewById(R.id.tvJudul)
-        val halaman: TextView = itemView.findViewById(R.id.tvHalaman)
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val imgFile: ImageView = itemView.findViewById(R.id.imgFile)
+        val txtJudul: TextView = itemView.findViewById(R.id.txtJudul)
+        val txtPages: TextView = itemView.findViewById(R.id.txtPages)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,17 +22,17 @@ class LaporanAdapter(private var data: List<Laporan>) :
         return ViewHolder(view)
     }
 
+    override fun getItemCount(): Int = list.size
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = data[position]
-        holder.img.setImageResource(item.cover)
-        holder.judul.text = item.judul
-        holder.halaman.text = item.halaman
+        val item = list[position]
+        holder.imgFile.setImageResource(item.image)
+        holder.txtJudul.text = item.judul
+        holder.txtPages.text = item.pages
     }
 
-    override fun getItemCount(): Int = data.size
-
     fun updateList(newList: List<Laporan>) {
-        data = newList
+        list = ArrayList(newList)
         notifyDataSetChanged()
     }
 }

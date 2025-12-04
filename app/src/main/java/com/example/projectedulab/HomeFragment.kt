@@ -1,3 +1,17 @@
+package com.example.yourappname   // ganti sesuai package kamu
+
+import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+
 class HomeFragment : Fragment() {
 
     private lateinit var adapter: LaporanAdapter
@@ -13,28 +27,35 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val rv = view.findViewById<RecyclerView>(R.id.rvLaporan)
+        val txtHalo = view.findViewById<TextView>(R.id.txtHalo)
         val edtSearch = view.findViewById<EditText>(R.id.edtSearch)
+        val rv = view.findViewById<RecyclerView>(R.id.rvLaporan)
+
+        txtHalo.text = "Halo, User!"
 
         rv.layoutManager = GridLayoutManager(requireContext(), 2)
 
         dataList = arrayListOf(
-            Laporan("Laporan Praktikum Basis Data", "18 Pages", R.drawable.ic_file),
-            Laporan("Laporan Praktikum Jaringan", "28 Pages", R.drawable.ic_file),
-            Laporan("Laporan Praktikum Manajemen", "30 Pages", R.drawable.ic_file),
-            Laporan("Laporan Praktikum Matematika", "14 Pages", R.drawable.ic_file),
+            Laporan("Laporan Basis Data", "18 Pages", R.drawable.ic_file),
+            Laporan("Laporan Jaringan", "28 Pages", R.drawable.ic_file),
+            Laporan("Laporan Manajemen", "30 Pages", R.drawable.ic_file),
+            Laporan("Laporan Matematika", "14 Pages", R.drawable.ic_file)
         )
 
         adapter = LaporanAdapter(dataList)
         rv.adapter = adapter
 
-        // SEARCH FILTER
-        edtSearch.addTextChangedListener {
-            val keyword = it.toString().lowercase()
-            val filtered = dataList.filter {
-                it.judul.lowercase().contains(keyword)
+        edtSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                val keyword = s.toString().lowercase()
+                val filteredList = dataList.filter {
+                    it.judul.lowercase().contains(keyword)
+                }
+                adapter.updateList(filteredList)
             }
-            adapter.updateList(filtered)
-        }
+        })
     }
 }

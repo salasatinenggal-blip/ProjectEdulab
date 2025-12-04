@@ -1,30 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:orientation="vertical"
+    android:background="#2196F3">
 
-    <!-- Search Bar -->
+    <TextView
+        android:id="@+id/txtHalo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Halo, User!"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="20dp" />
+
     <EditText
         android:id="@+id/edtSearch"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_margin="12dp"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
         android:padding="12dp"
-        android:hint="Cari laporan ..."
-        android:background="@drawable/edittetx_bg"
-        android:drawableStart="@drawable/ic_search"
-        android:drawablePadding="10dp"
-        android:textSize="14sp" />
+        android:hint="Cari laporan..."
+        android:background="@android:drawable/editbox_background" />
 
-    <!-- Grid RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLaporan"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="10dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:padding="10dp" />
 
 </LinearLayout>
