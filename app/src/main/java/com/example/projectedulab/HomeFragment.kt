@@ -1,4 +1,4 @@
-package com.example.yourappname   // ganti sesuai package kamu
+package com.example.projectedulab   // ganti sesuai package kamu
 
 import android.os.Bundle
 import android.text.Editable

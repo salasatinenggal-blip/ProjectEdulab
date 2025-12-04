@@ -1,4 +1,4 @@
-package com.example.yourappname   // ubah sesuai package project kamu
+package com.example.projectedulab   // ubah sesuai package project kamu
 
 data class Laporan(
     val judul: String,

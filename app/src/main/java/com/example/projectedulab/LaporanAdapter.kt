@@ -1,4 +1,4 @@
-package com.example.yourappname   // ubah sesuai package kamu
+package com.example.projectedulab   // ubah sesuai package kamu
 
 import android.view.LayoutInflater
 import android.view.View
