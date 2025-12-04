@@ -5,13 +5,6 @@
     android:orientation="horizontal"
     android:padding="12dp">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvTemplates"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp"/>
-
     <ImageView
         android:id="@+id/imgCover"
         android:layout_width="80dp"
