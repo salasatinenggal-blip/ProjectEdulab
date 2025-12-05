@@ -23,7 +23,7 @@ class TemplateActivity : AppCompatActivity() {
         val templates = listOf(
             Template("Template Resume", "18 Pages", R.drawable.cover_TemplateResume, "template_Resume.docx"),
             Template("Template Laporan Praktikum", "28 Pages", R.drawable.cover_TemplateLaporan, "template_jaringan.docx")
-        )
+         ]
 
 
 

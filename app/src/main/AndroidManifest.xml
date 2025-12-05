@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectEdulab">
         <activity
+            android:name=".DetailTemplateActivity"
+            android:exported="false" />
+        <activity
             android:name=".TemplateActivity"
             android:exported="false" />
         <activity
