@@ -1,85 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
     android:padding="20dp">
 
-    <LinearLayout
+    <!-- FOTO PROFIL -->
+    <ImageView
+        android:id="@+id/imgProfile"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_profile"
+        android:background="@drawable/circle_bg"
+        android:padding="8dp"
+        android:scaleType="centerCrop" />
+
+    <!-- NAMA -->
+    <EditText
+        android:id="@+id/edtNama"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:hint="Nama Lengkap" />
+
+    <!-- EMAIL -->
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:hint="Email" />
+
+    <!-- NOMOR HP -->
+    <EditText
+        android:id="@+id/edtHp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:hint="Nomor HP" />
+
+    <!-- JENIS KELAMIN -->
+    <RadioGroup
+        android:id="@+id/radioGender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp">
 
-        <!-- FOTO PROFIL -->
-        <ImageView
-            android:id="@+id/imgProfile"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/ic_profile"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/round_image"
-            android:padding="5dp" />
-
-        <!-- NAMA -->
-        <EditText
-            android:id="@+id/edtNama"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nama Lengkap"
-            android:padding="12dp"
-            android:background="@android:drawable/editbox_background_normal"
-            android:layout_marginTop="10dp" />
-
-        <!-- EMAIL -->
-        <EditText
-            android:id="@+id/edtEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:padding="12dp"
-            android:layout_marginTop="10dp" />
-
-        <!-- NOMOR HP -->
-        <EditText
-            android:id="@+id/edtPhone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nomor HP"
-            android:inputType="phone"
-            android:padding="12dp"
-            android:layout_marginTop="10dp" />
-
-        <!-- JENIS KELAMIN -->
-        <TextView
+        <RadioButton
+            android:id="@+id/rbLaki"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Jenis Kelamin"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp" />
+            android:text="Laki-laki" />
 
-        <RadioGroup
-            android:id="@+id/radioGender"
+        <RadioButton
+            android:id="@+id/rbPerempuan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginStart="20dp"
+            android:text="Perempuan" />
+    </RadioGroup>
 
-            <RadioButton
-                android:id="@+id/rbLaki"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Laki-laki" />
-
-            <RadioButton
-                android:id="@+id/rbPerempuan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Perempuan"
-                android:layout_marginStart="20dp" />
-        </RadioGroup>
-
-    </LinearLayout>
-
-</ScrollView>
+</LinearLayout>
