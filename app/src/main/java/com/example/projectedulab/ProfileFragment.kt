@@ -1,16 +1,21 @@
 package com.example.projectedulab
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.ImageView
-import android.widget.RadioButton
-import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
 
 class ProfileFragment : Fragment() {
+
+    private lateinit var imgProfile: ImageView
+    private val PICK_IMAGE = 100
+    private var imageUri: Uri? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,18 +27,21 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val imgProfile = view.findViewById<ImageView>(R.id.imgProfile)
-        val edtNama = view.findViewById<EditText>(R.id.edtNama)
-        val edtEmail = view.findViewById<EditText>(R.id.edtEmail)
-        val edtPhone = view.findViewById<EditText>(R.id.edtPhone)
-        val radioGender = view.findViewById<RadioGroup>(R.id.radioGender)
-        val rbLaki = view.findViewById<RadioButton>(R.id.rbLaki)
-        val rbPerempuan = view.findViewById<RadioButton>(R.id.rbPerempuan)
+        imgProfile = view.findViewById(R.id.imgProfile)
 
-        // Isi contoh data
-        edtNama.setText("User Edulab")
-        edtEmail.setText("user@example.com")
-        edtPhone.setText("08123456789")
-        rbLaki.isChecked = true
+        // Klik foto → buka galeri
+        imgProfile.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            startActivityForResult(intent, PICK_IMAGE)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK) {
+            imageUri = data?.data
+            imgProfile.setImageURI(imageUri)
+        }
     }
 }
