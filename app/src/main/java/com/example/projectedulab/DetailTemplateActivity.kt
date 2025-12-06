@@ -7,11 +7,12 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 
+
 class TemplateDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_template_detail)
+        setContentView(R.layout.activity_detail_template)
 
         val title = intent.getStringExtra("TITLE")
         val pages = intent.getStringExtra("PAGES")
