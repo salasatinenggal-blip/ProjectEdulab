@@ -21,9 +21,8 @@ class TemplateActivity : AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(this, 2)
 
         val templates = listOf(
-            Template("Template Resume", "18 Pages", R.drawable.cover_TemplateResume, "template_Resume.docx"),
-            Template("Template Laporan Praktikum", "28 Pages", R.drawable.cover_TemplateLaporan, "template_jaringan.docx")
-         ]
+            Template("Template Resume", "18 Pages", R.drawable.template_laporan, "template_Resume.docx")
+        )
 
 
 
@@ -32,9 +31,8 @@ class TemplateActivity : AppCompatActivity() {
         }
     }
 
-    // ==========================================
+
     // Fungsi membuka template Word (.docx)
-    // ==========================================
     private fun openWordTemplate(fileName: String) {
         try {
             val input = assets.open(fileName)
