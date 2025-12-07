@@ -1,4 +1,4 @@
-package com.example.projectedulab // Pastikan package ini sudah benar
+package com.example.projectedulab
 
 import android.os.Bundle
 import android.view.LayoutInflater
