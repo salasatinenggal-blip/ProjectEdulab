@@ -15,12 +15,12 @@ class MainActivity : AppCompatActivity() {
 
         bottomNav = findViewById(R.id.bottom_nav)
 
-        // ⬇ Menampilkan fragment awal hanya sekali
+        // Tampilkan fragment pertama
         if (savedInstanceState == null) {
             loadFragment(HomeFragment())
         }
 
-        // Listener bottom nav
+        // Listener Bottom Nav
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
