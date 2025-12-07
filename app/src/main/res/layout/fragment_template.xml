@@ -1,15 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"> <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:text="Ini adalah Halaman Template"
-    android:textSize="24sp"
-    android:textColor="@android:color/black"
-    android:textStyle="bold"/>
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#FFFFFF">
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/txtHalo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Daftar Template Laporan"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingBottom="12dp" />
+
+    <EditText
+        android:id="@+id/edtSearch"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="12dp"
+        android:hint="Cari template..."
+        android:background="@android:drawable/edit_text" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLaporan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="12dp" />
+
+</LinearLayout>
