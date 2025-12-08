@@ -37,7 +37,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        imgProfile = view.findViewById(R.id.imgProfile)
+        imgProfile = view.findViewById(R.id.imgFoto)
         btnPick = view.findViewById(R.id.btnPickImage)
         edtNama = view.findViewById(R.id.edtNama)
         edtEmail = view.findViewById(R.id.edtEmail)
