@@ -44,25 +44,25 @@ class TemplateFragment : Fragment() {
                 title = "Template Proposal",
                 pages = "Docx",
                 imageRes = R.drawable.ic_file,
-                fileName = "https://docs.google.com/document/d/1lhP9x"
+                fileName = "https://docs.google.com/document/d/19oOJA4Fo_sWKHCVOzYHyXNCPcTdgSYD4xR_9FX_q5Po/edit?usp=sharing"
             ),
             Template(
                 title = "Laporan Kerja Praktik",
                 pages = "Docx",
                 imageRes = R.drawable.ic_file,
-                fileName = "https://docs.google.com/document/d/2fA79d"
+                fileName = "https://docs.google.com/document/d/12rSGrD7DuidwAMY0Mzae3TbWIeDcrF_84HIK79ZMRB8/edit?usp=sharing"
             ),
             Template(
                 title = "Template Makalah",
                 pages = "PDF",
                 imageRes = R.drawable.ic_file,
-                fileName = "https://docs.google.com/document/d/3pU71k"
+                fileName = "https://docs.google.com/document/d/1SQT0IA4CwirMtNRXcMDTvGkpi5qkUQvMX9Q9q1YGddA/edit?usp=sharing"
             ),
             Template(
                 title = "Laporan Proyek",
                 pages = "Docx",
                 imageRes = R.drawable.ic_file,
-                fileName = "https://docs.google.com/document/d/4Kd7zV"
+                fileName = "https://docs.google.com/document/d/19x7ed4NcaYS-TiL91ieUTHQfxHhusgEAjvzoE0jiERM/edit?usp=sharing"
             )
         )
 
