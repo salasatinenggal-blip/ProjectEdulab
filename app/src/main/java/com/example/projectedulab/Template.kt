@@ -1,8 +1,9 @@
 package com.example.projectedulab
 
-data class Template(
-    val title: String,
+data class Laporan(
+    val judul: String,
     val pages: String,
-    val imageRes: Int,
-    val fileName: String   // misal "template_matkul.docx"
+    val image: Int,
+    val fileName: String
 )
+

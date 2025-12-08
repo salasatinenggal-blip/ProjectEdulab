@@ -1,5 +1,7 @@
 package com.example.projectedulab
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -15,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 class TemplateFragment : Fragment() {
 
     private lateinit var adapter: TemplateAdapter
-    private lateinit var dataList: ArrayList<Laporan>
+    private lateinit var dataList: ArrayList<Template>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,34 +38,46 @@ class TemplateFragment : Fragment() {
 
         rv.layoutManager = GridLayoutManager(requireContext(), 2)
 
-        // LIST DATA + LINK GOOGLE DOCS
+        // 1️⃣ LIST DATA TEMPLATE
+        // fileName di sini bisa:
+        // - URL Google Docs, atau
+        // - nama file .docx di assets (kalau kamu pakai assets)
         dataList = arrayListOf(
-            Laporan(
-                "Template Proposal", "Docx",
-                R.drawable.ic_file,
-                "https://docs.google.com/document/d/1lhP9x"
+            Template(
+                title = "Template Proposal",
+                pages = "Docx",
+                imageRes = R.drawable.ic_file,
+                fileName = "https://docs.google.com/document/d/1lhP9x"
             ),
-            Laporan(
-                "Laporan Kerja Praktik", "Docx",
-                R.drawable.ic_file,
-                "https://docs.google.com/document/d/2fA79d"
+            Template(
+                title = "Laporan Kerja Praktik",
+                pages = "Docx",
+                imageRes = R.drawable.ic_file,
+                fileName = "https://docs.google.com/document/d/2fA79d"
             ),
-            Laporan(
-                "Template Makalah", "PDF",
-                R.drawable.ic_file,
-                "https://docs.google.com/document/d/3pU71k"
+            Template(
+                title = "Template Makalah",
+                pages = "PDF",
+                imageRes = R.drawable.ic_file,
+                fileName = "https://docs.google.com/document/d/3pU71k"
             ),
-            Laporan(
-                "Laporan Proyek", "Docx",
-                R.drawable.ic_file,
-                "https://docs.google.com/document/d/4Kd7zV"
+            Template(
+                title = "Laporan Proyek",
+                pages = "Docx",
+                imageRes = R.drawable.ic_file,
+                fileName = "https://docs.google.com/document/d/4Kd7zV"
             )
         )
 
-        adapter = TemplateAdapter(dataList)
+        // 2️⃣ SET ADAPTER
+        // Saat item di-klik ➜ buka Word / viewer lewat Intent.ACTION_VIEW
+        adapter = TemplateAdapter(dataList) { template ->
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(template.fileName))
+            startActivity(intent)
+        }
         rv.adapter = adapter
 
-        // FITUR SEARCH
+        // 3️⃣ FITUR SEARCH
         edtSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
@@ -72,7 +86,7 @@ class TemplateFragment : Fragment() {
                 val keyword = s.toString().lowercase()
 
                 val filtered = dataList.filter {
-                    it.judul.lowercase().contains(keyword)
+                    it.title.lowercase().contains(keyword)
                 }
 
                 adapter.updateList(filtered)

@@ -1,8 +1,8 @@
 package com.example.projectedulab
 
-data class Laporan(
-    val judul: String,
-    val tipe: String,
-    val icon: Int,
-    val url: String        // Tambahan untuk link Google Docs
-)
+data class Template(
+    val title: String,
+    val pages: String,
+    val imageRes: Int,
+    val fileName: String
+) // misal "template_matkul.docx"
