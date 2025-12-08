@@ -21,11 +21,8 @@ class TemplateActivity : AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(this, 2)
 
         val templates = listOf(
-            Template("Template Resume", "18 Pages", R.drawable.template_laporan, "template_Resume.docx")
+            Template("Template Resume", "18 Pages", R.drawable.ic_template, "template_Resume.docx")
         )
-
-
-
         recyclerView.adapter = TemplateAdapter(templates) { template ->
             openWordTemplate(template.fileName)
         }

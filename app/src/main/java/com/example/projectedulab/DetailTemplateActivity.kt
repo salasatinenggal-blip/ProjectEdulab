@@ -12,7 +12,6 @@ class TemplateDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_template)
-
         val title = intent.getStringExtra("TITLE")
         val pages = intent.getStringExtra("PAGES")
         val imageRes = intent.getIntExtra("IMAGE", 0)
