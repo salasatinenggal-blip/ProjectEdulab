@@ -1,7 +1,8 @@
-package com.example.projectedulab   // ubah sesuai package project kamu
+package com.example.projectedulab
 
 data class Laporan(
     val judul: String,
-    val pages: String,
-    val image: Int
+    val tipe: String,
+    val icon: Int,
+    val url: String        // Tambahan untuk link Google Docs
 )

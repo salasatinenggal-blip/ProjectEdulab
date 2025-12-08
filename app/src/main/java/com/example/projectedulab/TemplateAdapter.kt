@@ -1,5 +1,7 @@
 package com.example.projectedulab
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,39 +10,39 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class TemplateAdapter(
-    private var listTemplate: List<Template>,   // <-- UBAH: sekarang var agar bisa di-update
-    private val onClickItemTemplate: (Template) -> Unit
-) : RecyclerView.Adapter<TemplateAdapter.TemplateViewHolder>() {
+    private var list: List<Laporan>
+) : RecyclerView.Adapter<TemplateAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TemplateViewHolder {
-        val layout = LayoutInflater.from(parent.context)
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val img = itemView.findViewById<ImageView>(R.id.imgIcon)
+        val judul = itemView.findViewById<TextView>(R.id.txtJudul)
+        val tipe = itemView.findViewById<TextView>(R.id.txtTipe)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val v = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_template, parent, false)
-        return TemplateViewHolder(layout)
+        return ViewHolder(v)
     }
 
-    override fun onBindViewHolder(holder: TemplateViewHolder, position: Int) {
-        val template = listTemplate[position]
+    override fun getItemCount(): Int = list.size
 
-        holder.row.setOnClickListener {
-            onClickItemTemplate(template)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = list[position]
+
+        holder.img.setImageResource(item.icon)
+        holder.judul.text = item.judul
+        holder.tipe.text = item.tipe
+
+        // Klik membuka Google Docs
+        holder.itemView.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(item.url))
+            it.context.startActivity(intent)
         }
-
-        holder.imgCover.setImageResource(template.imageRes)
-        holder.txtTitle.text = template.title
-        holder.txtPages.text = template.pages
     }
 
-    override fun getItemCount(): Int = listTemplate.size
-
-    // 🔥 Tambahan penting untuk search agar tidak crash
-    fun updateList(newList: List<Template>) {
-        listTemplate = newList
+    fun updateList(newList: List<Laporan>) {
+        list = newList
         notifyDataSetChanged()
-    }
-
-    class TemplateViewHolder(val row: View) : RecyclerView.ViewHolder(row) {
-        val imgCover: ImageView = row.findViewById(R.id.imgCover)
-        val txtTitle: TextView = row.findViewById(R.id.txtTitle)
-        val txtPages: TextView = row.findViewById(R.id.txtPages)
     }
 }
