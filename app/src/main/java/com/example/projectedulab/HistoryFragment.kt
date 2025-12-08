@@ -37,19 +37,19 @@ class HistoryFragment : Fragment() {
                 "Laporan Tugas Pemrograman Mobile",
                 "08 Des 2025",
                 "tugas_mobile.docx",
-                "https://docs.google.com/document/d/xxxx"
+                "https://docs.google.com/document/d/12rSGrD7DuidwAMY0Mzae3TbWIeDcrF_84HIK79ZMRB8/edit?usp=sharing"
             ),
             LaporanHistory(
                 "Laporan Tugas Basis Data",
                 "05 Des 2025",
                 "tugas_basisdata.pdf",
-                "https://docs.google.com/document/d/yyyy"
+                "https://docs.google.com/document/d/19oOJA4Fo_sWKHCVOzYHyXNCPcTdgSYD4xR_9FX_q5Po/edit?usp=sharing"
             ),
             LaporanHistory(
                 "Laporan Praktikum IoT Sensor Suhu",
                 "03 Des 2025",
                 "tugas_iot_suhu.docx",
-                "https://docs.google.com/document/d/zzzz"
+                "https://docs.google.com/document/d/19x7ed4NcaYS-TiL91ieUTHQfxHhusgEAjvzoE0jiERM/edit?usp=sharing"
             )
             // Tambahkan item lain dengan format sama
         )
