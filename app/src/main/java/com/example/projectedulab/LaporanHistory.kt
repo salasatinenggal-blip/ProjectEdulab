@@ -1,7 +1,8 @@
 package com.example.projectedulab
 
 data class LaporanHistory(
-    val title: String,
-    val date: String,
-    val fileName: String
+    val judul: String,
+    val tanggal: String,
+    val fileName: String,
+    val url: String
 )

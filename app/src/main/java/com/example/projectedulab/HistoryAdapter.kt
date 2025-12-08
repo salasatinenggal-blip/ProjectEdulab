@@ -1,5 +1,7 @@
-package com.example.projectedulab // Ganti dengan nama package Anda
+package com.example.projectedulab
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,57 +9,40 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-// Asumsi Anda sudah mendefinisikan LaporanHistory di HistoryFragment.kt
-// data class LaporanHistory(val title: String, val date: String, val fileName: String)
-
 class HistoryAdapter(
-    private val historyList: List<LaporanHistory>,
-    private val clickListener: (LaporanHistory) -> Unit // Lambda untuk menangani klik
-) : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
+    private val listHistory: List<LaporanHistory>
+) : RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
-    // --- 1. ViewHolder (Menghubungkan View) ---
-    // ViewHolder menyimpan referensi ke semua View yang ada di item_history.xml
-    inner class HistoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvReportTitle: TextView = itemView.findViewById(R.id.tvReportTitle)
-        val tvReportDate: TextView = itemView.findViewById(R.id.tvReportDate)
-        val ivOpen: ImageView = itemView.findViewById(R.id.ivOpen) // Tombol Aksi
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val tvJudul: TextView = itemView.findViewById(R.id.tvReportTitle)
+        val tvTanggal: TextView = itemView.findViewById(R.id.tvReportDate)
+        val btnOpen: ImageView = itemView.findViewById(R.id.ivOpen)
+    }
 
-        fun bind(laporan: LaporanHistory, clickListener: (LaporanHistory) -> Unit) {
-            tvReportTitle.text = laporan.title
-            tvReportDate.text = "Disimpan: ${laporan.date}"
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_history, parent, false)
+        return ViewHolder(view)
+    }
 
-            // Menetapkan click listener pada item atau tombol aksi
-            itemView.setOnClickListener {
-                clickListener(laporan)
-            }
-            // Anda juga bisa menetapkan listener khusus pada tombol Buka (ivOpen)
-            ivOpen.setOnClickListener {
-                clickListener(laporan)
-            }
+    override fun getItemCount(): Int = listHistory.size
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = listHistory[position]
+
+        holder.tvJudul.text = item.judul
+        holder.tvTanggal.text = "Disimpan: ${item.tanggal}"
+
+        // BUKA GOOGLE DOCS SAAT DIKLIK
+        val openDoc = {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(item.url))
+            holder.itemView.context.startActivity(intent)
         }
-    }
 
-    // --- 2. onCreateViewHolder (Membuat View Baru) ---
-    // Dipanggil ketika RecyclerView membutuhkan ViewHolder baru
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.item_history,
-            parent,
-            false
-        )
-        return HistoryViewHolder(view)
-    }
+        // Klik card
+        holder.itemView.setOnClickListener { openDoc() }
 
-    // --- 3. onBindViewHolder (Mengisi Data ke View) ---
-    // Dipanggil untuk menampilkan data pada posisi tertentu
-    override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
-        val laporan = historyList[position]
-        holder.bind(laporan, clickListener)
-    }
-
-    // --- 4. getItemCount (Jumlah Item) ---
-    // Mengembalikan total item dalam daftar
-    override fun getItemCount(): Int {
-        return historyList.size
+        // Klik icon open
+        holder.btnOpen.setOnClickListener { openDoc() }
     }
 }
