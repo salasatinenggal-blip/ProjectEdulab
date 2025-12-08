@@ -38,10 +38,7 @@ class TemplateFragment : Fragment() {
 
         rv.layoutManager = GridLayoutManager(requireContext(), 2)
 
-        // 1️⃣ LIST DATA TEMPLATE
-        // fileName di sini bisa:
-        // - URL Google Docs, atau
-        // - nama file .docx di assets (kalau kamu pakai assets)
+        // LIST DATA TEMPLATE
         dataList = arrayListOf(
             Template(
                 title = "Template Proposal",
@@ -69,18 +66,41 @@ class TemplateFragment : Fragment() {
             )
         )
 
-        // 2️⃣ SET ADAPTER
-        // Saat item di-klik ➜ buka Word / viewer lewat Intent.ACTION_VIEW
+        // ADAPTER + AKSI KETIKA ITEM DIKLIK
         adapter = TemplateAdapter(dataList) { template ->
+
+            // 1. Tambahkan ke history dummy (HistoryStore)
+            //    Buang dulu yang URL-nya sama supaya tidak dobel
+            HistoryStore.historyList.removeAll { it.url == template.fileName }
+
+            //    Tambahkan sebagai entri history baru (posisi paling atas)
+            //    Urutan parameter LaporanHistory mengikuti yang kamu pakai di dummy:
+            //    (judul, tanggal, namaFile, url)
+            HistoryStore.historyList.add(
+                0,
+                LaporanHistory(
+                    template.title,
+                    "08 Des 2025",          // nanti bisa diganti tanggal sekarang
+                    template.fileName,
+                    template.fileName      // dipakai juga sebagai URL
+                )
+            )
+
+            // 2. Buka dokumen (Google Docs / browser)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(template.fileName))
             startActivity(intent)
         }
         rv.adapter = adapter
 
-        // 3️⃣ FITUR SEARCH
+        // FITUR SEARCH
         edtSearch.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun beforeTextChanged(
+                s: CharSequence?, start: Int, count: Int, after: Int
+            ) { }
+
+            override fun onTextChanged(
+                s: CharSequence?, start: Int, before: Int, count: Int
+            ) { }
 
             override fun afterTextChanged(s: Editable?) {
                 val keyword = s.toString().lowercase()
