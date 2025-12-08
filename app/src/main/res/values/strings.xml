@@ -1,5 +1,23 @@
 <resources>
     <string name="app_name">ProjectEdulab</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <!-- Default -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Template Item Strings -->
+    <string name="judul">Judul</string>
+    <string name="tipe">Tipe</string>
+    <string name="btn_more_desc">Tombol lainnya</string>
+    <string name="ic_file_desc">Icon File</string>
+
+    <!-- Template Fragment -->
+    <string name="search_hint">Cari template…</string>
+    <string name="title_template">Daftar Template Laporan</string>
+
+    <!-- Template Names -->
+    <string name="template_proposal">Template Proposal</string>
+    <string name="template_kp">Laporan Kerja Praktik</string>
+    <string name="template_makalah">Template Makalah</string>
+    <string name="template_proyek">Laporan Proyek</string>
+
 </resources>
