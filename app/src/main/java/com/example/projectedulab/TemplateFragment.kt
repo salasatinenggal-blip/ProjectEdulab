@@ -69,24 +69,23 @@ class TemplateFragment : Fragment() {
         // ADAPTER + AKSI KETIKA ITEM DIKLIK
         adapter = TemplateAdapter(dataList) { template ->
 
-            // 1. Tambahkan ke history dummy (HistoryStore)
-            //    Buang dulu yang URL-nya sama supaya tidak dobel
+            // Tambahkan ke history dummy (HistoryStore)
             HistoryStore.historyList.removeAll { it.url == template.fileName }
 
             //    Tambahkan sebagai entri history baru (posisi paling atas)
-            //    Urutan parameter LaporanHistory mengikuti yang kamu pakai di dummy:
+            //    Urutan parameter LaporanHistory mengikuti yang di pakai di dummy:
             //    (judul, tanggal, namaFile, url)
             HistoryStore.historyList.add(
                 0,
                 LaporanHistory(
                     template.title,
-                    "08 Des 2025",          // nanti bisa diganti tanggal sekarang
+                    "08 Des 2025",
                     template.fileName,
                     template.fileName      // dipakai juga sebagai URL
                 )
             )
 
-            // 2. Buka dokumen (Google Docs / browser)
+            // Buka dokumen (Google Docs / browser)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(template.fileName))
             startActivity(intent)
         }

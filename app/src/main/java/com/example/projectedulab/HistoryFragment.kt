@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-// ⬅ penting: pakai layout fragment_history
+
 class HistoryFragment : Fragment(R.layout.fragment_history) {
 
     private lateinit var rvHistory: RecyclerView
@@ -17,7 +17,7 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // ⬅ di screenshot kamu sudah seperti ini, tinggal pastikan import R OK
+
         rvHistory = view.findViewById(R.id.rvHistory)
         tvEmptyHistory = view.findViewById(R.id.tvEmptyHistory)
 
@@ -33,7 +33,7 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
     }
 
     private fun loadHistoryData() {
-        // AMBIL DATA DUMMY DARI HistoryStore
+
         val historyData = HistoryStore.historyList
 
         if (historyData.isEmpty()) {
